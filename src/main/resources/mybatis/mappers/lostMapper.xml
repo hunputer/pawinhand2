@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ph4.s1.lost.LostDAO">
+	<insert id="setInsert"  parameterType="LostDTO">
+   	      <selectKey keyProperty="num" resultType="Long" order="BEFORE">
+   	      	  select lost_seq.nextval from dual
+   	      </selectKey>
+      		  insert into lost
+      		  values(#{num},#{state}, #{lostDate}, #{lostProvince}, #{lostCity}, #{lostLocation}, #{phone}, #{animalSpecies}, #{detailSpecies}, #{gender}, #{age}, #{color}, #{feature}, #{contents}, #{id})
+    </insert>
+    
+    <select id="getOne" resultType="LostDTO" parameterType="LostDTO">
+    	select * from lost where num = #{num}
+    </select>
+    
+    <delete id="setDelete" parameterType="LostDTO">
+    	delete from lost where num = #{num}
+    </delete>
+    
+    <update id="setUpdate">
+    	update lost set state = #{state}, lostDate = #{lostDate}, lostProvince = #{lostProvince}, lostCity = #{lostCity}, lostLocation = #{lostLocation}, phone = #{phone}, animalSpecies = #{animalSpecies}, detailSpecies = #{detailSpecies}, gender = #{gender},age = #{age}, color = #{color}, feature = #{feature}, contents = #{contents}, id = #{id} where num = #{num}
+    </update>
+</mapper>

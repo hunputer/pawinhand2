@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="com.ph4.s1.lost.LostDTO" alias="LostDTO"/>
+		<typeAlias type="com.ph4.s1.lostFile.LostFileDTO" alias="LostFileDTO"/>
+		<typeAlias type="com.ph4.s1.lostReply.LostReplyDTO" alias="LostReplyDTO"/>
+		<typeAlias type="com.ph4.s1.util.Pager" alias="Pager"/>
+		<typeAlias type="com.ph4.s1.lostReply.LostReplyPager" alias="LostReplyPager"/>
+	</typeAliases>
+</configuration>

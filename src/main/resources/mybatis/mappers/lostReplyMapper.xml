@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ph4.s1.lostReply.LostReplyDAO">
+	
+	<select id="getList" resultType="LostReplyDTO" parameterType="LostReplyPager">
+		select * from
+		(select rownum R, N.* from 
+		(select * from lostreply 
+		where lostNum = #{lostNum}
+		order by ref desc, step asc) N)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	
+	<select id="getCount" resultType="Long" parameterType="LostReplyPager">
+		select count(num) from lostreply where lostNum = #{lostNum}
+	</select>
+	
+	<update id="setDelete" parameterType="LostReplyDTO">
+		update lostreply set contents = '삭제된 메세지 입니다.' where num = #{num}
+	</update>
+	
+	<insert id="setInsert" parameterType="LostReplyDTO">
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+   	  	  select lostreply_seq.nextval from dual
+   	    </selectKey>
+		insert into lostreply values (#{num}, #{lostNum}, #{id}, #{contents},sysdate, #{num},0,0)
+	</insert>
+	
+	<select id="getOne" parameterType="LostReplyDTO" resultType="LostReplyDTO">
+		select * from lostreply where num = #{num}
+	</select>
+	
+	<update id="setReplyUpdate" parameterType="LostReplyDTO">
+		update lostreply set step=step+1 where 
+		ref=(select ref from lostreply where num=#{num}) 
+		and step > (select step from lostreply where num=#{num})
+	</update>
+	
+	<insert id="setReply" parameterType="LostReplyDTO">
+		insert into lostreply values (lostreply_seq.nextval
+		, #{lostNum}, #{id}, #{contents}, sysdate, 
+		(select ref from lostreply where num=#{num}),
+		(select step+1 from lostreply where num=#{num}), 
+		(select depth+1 from lostreply where num=#{num}))
+	</insert>
+	
+</mapper>
