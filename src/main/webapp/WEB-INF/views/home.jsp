@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 	$("#lostWrite").click(function(){
-		window.open("./lost/lostWrite", 'Write Form', 'width=610px, height=700px, scrollbars=yes');
+		window.open("./lost/lostWrite", 'Write Form', 'width=630px, height=700px, scrollbars=yes');
 	});
 </script>
 </html>

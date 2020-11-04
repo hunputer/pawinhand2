@@ -207,7 +207,7 @@
 	    getList();
 		
 	    $("#lostUpdate").click(function(){
-			window.open("./lostUpdate?num=${dto.num}", 'Write Form', 'width=610px, height=700px, scrollbars=yes');
+			window.open("./lostUpdate?num=${dto.num}", 'Write Form', 'width=630px, height=700px, scrollbars=yes');
 		});
 	    
 	    $("#result").on("click", ".c1", function(){
