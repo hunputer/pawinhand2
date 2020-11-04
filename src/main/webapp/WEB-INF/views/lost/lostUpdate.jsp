@@ -42,6 +42,7 @@
 	
 	.body{
 		margin-left : 10px;
+		padding-bottom: 100px
 	}
 	
 	.inputText{
@@ -58,12 +59,40 @@
 		width : 600px;
 	}
 	
+	.submitBtn{
+		position : fixed;
+		width : 100%;
+		bottom : 0px;
+		cursor : pointer;
+		background: green;
+		text-align: center;
+	}
+	
+	.submitBtn > h3{
+		font-size: 12px;
+		color: white;
+	}
+	
+	.header{
+		width : 100%;
+		height : 25px;
+		text-align: center;
+		background-color: #d3d3d3;
+		padding-top: 3px;
+	}
+	
+	.header > h3{
+		font-size: 15px;
+		font-family: sans-serif;
+	}
+	
 </style>
 
 
 </head>
 
 <body>
+	<div class="header"><span>기본정보<span></div>
 	<div class="body">
 	<form name="popupForm" id="frm" action="./lostUpdate" method="post" enctype="multipart/form-data">
     <h3 class="formTitle">구분</h3>
@@ -184,9 +213,9 @@
     	<div class="ficture" id="fileResult3"></div>
     </div>
     
- 	<input type="button" id="formbtn">등록하기</a>
   </form>
   </div>
+  <div id="formbtn" class="submitBtn"><h3>등록하기</h3></div>
 </body>
 
 <script type="text/javascript">
