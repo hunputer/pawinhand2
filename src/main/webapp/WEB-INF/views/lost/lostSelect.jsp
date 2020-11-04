@@ -199,13 +199,17 @@
 	</form>
 	
 	<a href="./lostDelete?num=${dto.num}">글삭제</a>
-	<a href="./lostUpdate?num=${dto.num}">글수정</a>
+	<a id="lostUpdate">글수정</a>
 </div>
 	
 	<script type="text/javascript">
 	 	var curPage = 1;
 	    getList();
 		
+	    $("#lostUpdate").click(function(){
+			window.open("./lostUpdate?num=${dto.num}", 'Write Form', 'width=610px, height=700px, scrollbars=yes');
+		});
+	    
 	    $("#result").on("click", ".c1", function(){
 	    	curPage = $(this).attr("title");
 	    	alert(curPage);

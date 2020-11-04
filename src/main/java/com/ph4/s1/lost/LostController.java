@@ -37,8 +37,8 @@ public class LostController {
 	public ModelAndView setInsert(LostDTO lostDTO, String date, String[] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		lostDTO.setLostDate(Date.valueOf(date));
-		System.out.println("지훈");
 		int result = lostService.setInsert(lostDTO, files);
+		mv.setViewName("lost/lostInsertClose");
 		return mv;
 	}
 	
@@ -91,7 +91,7 @@ public class LostController {
 			System.out.println(oriName);
 			result = lostFileService.setInsert(lostFileDTO);
 		}
-		mv.setViewName("redirect:./lostSelect?num="+num);
+		mv.setViewName("lost/lostUpdateClose");
 		return mv;
 	}
 	

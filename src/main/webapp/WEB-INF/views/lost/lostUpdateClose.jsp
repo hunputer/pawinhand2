@@ -1,10 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -12,21 +13,21 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-
-<span id="lostWrite">lostWrite</span>
-
+	
 </body>
 
 <script type="text/javascript">
-	$("#lostWrite").click(function(){
-		window.open("./lost/lostWrite", 'Write Form', 'width=610px, height=700px, scrollbars=yes');
-	});
+	alert("업데이트 완료되었습니다");
+	WinClose();
+	
+	function WinClose(){
+		opener.location.reload(true);
+		window.open('','_self').close();
+	}
+
 </script>
 </html>
