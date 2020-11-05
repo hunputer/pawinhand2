@@ -102,6 +102,19 @@
 	.lostCity, .detailSpecies{
 		display: inline-block;
 	}
+	
+	#file{
+		display: none;
+	}
+	
+	.input-file-button{
+  		padding: 6px 25px;
+ 		background-color: green;
+ 		border-radius: 4px;
+ 		color: white;
+  		cursor: pointer;
+	}
+	
 </style>
 </head>
 
@@ -222,7 +235,8 @@
     
     <input type="hidden" value="wlgns" name="id">
     <div class="files">
-    	<input type="file" class="custom-file-input" id="file" name="file" onchange="fileUpload(this)"><br/>
+    	<label class="input-file-button" for="file">업로드</label>
+    	<input type="file" id="file" name="file" onchange="fileUpload(this)"><br/>
     	<div class="ficture" id="fileResult1"></div>
     	<div class="ficture" id="fileResult2"></div>
     	<div class="ficture" id="fileResult3"></div>

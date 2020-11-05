@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  color: #2f4f4f;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  line-height: 40px;
+}
+
+/***** banner *****/
+.banner {
+	margin: 10px 0;
+}
+
+/***** sub nav *****/
+.sub-nav {
+	margin: 5px 0;
+	height: 3vh;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+
+.sub-link {
+	padding: 10px 30px;
+	color: #000;
+}
+
+.sub-link:hover {
+	text-decoration: none;
+	color: #FDC033;
+}
+
+/***** main nav-bar *****/
+nav {
+	height: 10vh;
+}
+
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	padding: 0;
+}
+
+.navbar-brand p {
+	color: #FDC033;
+	padding-top: 15px;
+	font-size: 1.4em;
+}
+
+.nav-item {
+	margin-left: 10px;
+}
+
+.nav-link {
+	padding: 10px 20px;
+	font-size: 1.3em;
+ 	
+}
+
+/***** shelter *****/
+.shelter{
+	margin: 50px 0;
+}
+.title {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.title h1{
+	font-size: 1.4em;
+	margin-right: 5px;
+}
+
+.title h2{
+	font-size: 1.2em;
+}
+
+.shelter a{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	text-decoration: none;
+	font-weight: 100;
+}
+
+.shelter a :hover {
+	color: #FDC033;
+}
+
+.shelter p {
+	padding: 10px 0;
+	margin: 0;
+	line-height: 1.2;
+	text-align: center;
+	font-weight: 100;
+}
