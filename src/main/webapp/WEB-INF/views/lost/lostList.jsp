@@ -23,6 +23,7 @@
 		margin : 0px 50px 50px 0px;
 		float: left;
 		border: 1px gray solid;
+		cursor: pointer;
 	}
 	
 	.lostImage{
@@ -75,7 +76,7 @@
 <div class="main">
 	<ul>
 		<c:forEach items="${lists}" var="list">
-			<li class="lostList">
+			<li class="lostList" title="${list.num}">
 				<div class="lostImage">
 					<img src="../resources/upload/lost/${list.fileName}" width="270" height="270" alt="">
 					<div class="lostMain">
@@ -99,4 +100,15 @@
 
 
 </body>
+
+<script type="text/javascript">
+	$(".lostList").click(function(){
+		var num = $(this).attr("title");
+		location.href="./lostSelect?num="+num;
+	})
+	
+	
+</script>
+
+
 </html>
