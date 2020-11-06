@@ -30,4 +30,8 @@ public class LostFileDAO {
 	public long getCount(LostDTO lostDTO) {
 		return sqlSession.selectOne(NAMESPACE+"getCount", lostDTO);
 	}
+	
+	public LostFileDTO getMain(LostDTO lostDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getMain", lostDTO);
+	}
 }

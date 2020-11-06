@@ -83,4 +83,13 @@ public class LostService {
 		return fileName;
 	}
 	
+	public List<LostDTO> getList(){
+		List<LostDTO> ar = lostDAO.getList();
+		for(LostDTO dto : ar) {
+			LostFileDTO fileDTO = lostFileDAO.getMain(dto);
+			dto.setFileName(fileDTO.getFileName());
+		}
+		return ar;
+	}
+	
 }

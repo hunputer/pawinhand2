@@ -1,5 +1,7 @@
 package com.ph4.s1.lost;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,9 @@ public class LostDAO {
 	
 	public int setUpdate(LostDTO lostDTO) {
 		return sqlSession.update(NAMESPACE+"setUpdate", lostDTO);
+	}
+	
+	public List<LostDTO> getList(){
+		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 }

@@ -36,4 +36,8 @@ public class LostReplyService {
 		result = lostReplyDAO.setReply(lostReplyDTO);
 		return result;
 	}
+	
+	public long getCount(LostReplyPager lostReplyPager) {
+		return lostReplyDAO.getCount(lostReplyPager);
+	}
 }

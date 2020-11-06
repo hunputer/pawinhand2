@@ -21,6 +21,14 @@ public class LostDTO {
 	private String feature;
 	private String contents;
 	private String id;
+	private String fileName;
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public long getNum() {
 		return num;
 	}

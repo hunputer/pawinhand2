@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ph4.s1.lostFile.LostFileDAO;
 import com.ph4.s1.lostFile.LostFileDTO;
 import com.ph4.s1.lostFile.LostFileService;
+import com.ph4.s1.lostReply.LostReplyPager;
+import com.ph4.s1.lostReply.LostReplyService;
 
 @Controller
 @RequestMapping("/lost/**")
@@ -25,6 +28,8 @@ public class LostController {
 	private LostService lostService;
 	@Autowired
 	private LostFileService lostFileService;
+	@Autowired
+	private LostReplyService lostReplyService;
 	
 	@GetMapping("lostWrite")
 	public ModelAndView setInsert() throws Exception{
@@ -47,6 +52,10 @@ public class LostController {
 		ModelAndView mv = new ModelAndView();
 		LostDTO dto = lostService.getOne(lostDTO);
 		List<LostFileDTO> files = lostFileService.getFiles(lostDTO);
+		LostReplyPager pager = new LostReplyPager();
+		pager.setLostNum(lostDTO.getNum());
+		long replyCount = lostReplyService.getCount(pager);
+		mv.addObject("replyCount", replyCount);
 		mv.addObject("dto", dto);
 		mv.addObject("files", files);
 		mv.setViewName("lost/lostSelect");
@@ -104,4 +113,14 @@ public class LostController {
 		mv.setViewName("lost/lostFileName");
 		return mv;
 	}
+	
+	@GetMapping("lostList")
+	public ModelAndView lostList() {
+		ModelAndView mv = new ModelAndView();
+		List<LostDTO> ar = lostService.getList();
+		mv.addObject("lists", ar);
+		mv.setViewName("lost/lostList");
+		return mv;
+	}
+	
 }

@@ -21,4 +21,10 @@
 		select count(num) from lostFile where num = #{num}
 	</select>
 	
+	<select id="getMain" parameterType="LostDTO" resultType="LostFileDTO">
+    	select distinct fileName from lostFile where num = #{num} 
+    </select>
+    
+    
+	
 </mapper>

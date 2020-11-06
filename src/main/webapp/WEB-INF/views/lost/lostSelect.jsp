@@ -14,21 +14,24 @@
 	}
 	
 	.carousel-inner > .carousel-item > img{
-		width : 100%;
+		width : 1100px;
 		height : 500px;
 		min-width : 700px;
 	}
 	
 	.main{
-		margin : 0px auto;
+		margin : 110px auto 0px;
 		min-width : 700px;
-		width : 80%;
-		height : 1200px;
+		width : 1100px;
+		height : 2000px;
+		padding-left: 30px;
 	}
 	
 	.description{
-		margin-left: 15px;
+		margin-left: 10px;
 		margin-top: 50px;
+		width : 1100px;
+		height : 1100px;
 	}
 	
 	.replytable{
@@ -44,10 +47,13 @@
 	}
 	
 	.replyEmpty{
-		display: inline;
+		display: inline-block;
+		width : 24px;
+		height : 20px;
+	}
+	
+	.replyEmpty > span{
 		color : white;
-		width : 50px;
-		height : 50px;
 	}
 	
 	.replyContents{
@@ -79,6 +85,39 @@
 	.replyDate > h3{
 		font-size: 13px;
 		color: gray;
+	}
+	
+	.divs{
+		margin-top : 20px;
+	}
+	
+	.state{
+		display: inline-block;
+		margin-right: 10px;
+	}
+	
+	.titles{
+		margin-right : 10px;
+		color: gray;
+	}
+	
+	.replyTitle{
+		margin-bottom: 20px;
+	}
+	
+	.replyTitles{
+		display : inline-block;
+		font-size: 14px;
+		color : gray;
+	}
+	
+	#lostDelete{
+		color : blue;
+		margin-right: 5px;
+	}
+	
+	#lostUpdate{
+		color : blue;
 	}
 </style>
 
@@ -122,63 +161,67 @@
 </div>
 </div>
 <div class="description">
-	<div>
-		<div>${dto.state}</div>
-		<span>${dto.detailSpecies}</span>
+	<div class="divs">
+		<div class="state">${dto.state}</div>
+		<span class="detailSpecies">${dto.detailSpecies}</span>
 	</div>
 	
-	<div>
-		<span>성 별 :</span>
+	<div class="divs">
+		<span class="titles">성  별 :</span>
 		<span>${dto.gender}</span>
 	</div>
 	
-	<div>
-		<span>나 이 :</span>
+	<div class="divs">
+		<span class="titles">나  이 :</span>
 		<span>${dto.age}</span>
 	</div>
 	
-	<div>
-		<span>몸무게 :</span>
+	<div class="divs">
+		<span class="titles">몸무게 :</span>
 		<span>${dto.state}</span>
 	</div>
 	
-	<div>
-		<span>털색 :</span>
+	<div class="divs">
+		<span class="titles">털  색 :</span>
 		<span>${dto.color}</span>
 	</div>
 	
-	<div>
-		<span>특징 :</span>
+	<div class="divs">
+		<span class="titles">특  징 :</span>
 		<span>${dto.feature}</span>
 	</div>
 	<hr>
 	
-	<div>
-		<span>실종일 :</span>
+	<div class="divs">
+		<span class="titles">실 종 일 :</span>
 		<span>${dto.lostDate}</span>
 	</div>
 	
-	<div>
-		<span>실종장소 :</span>
+	<div class="divs">
+		<span class="titles">실종장소 :</span>
 		<span>${dto.lostProvince} ${dto.lostCity} ${dto.lostLocation}</span>
 	</div>
 	
-	<div>
-		<span>아이디 :</span>
+	<div class="divs">
+		<span class="titles">아 이 디 :</span>
 		<span>${dto.id}</span>
 	</div>
 	
-	<div>
-		<span>연락처 :</span>
+	<div class="divs">
+		<span class="titles">연 락 처 :</span>
 		<span>${dto.phone}</span>
-	</div>
+	</div class="divs">
 	<hr>
 	
-	<div>
+	<div class="divs">
 		<span>${dto.contents}</span>
 	</div>
 	<hr>
 	
+	<div class="replyTitle">
+		<h3 class="replyTitles">댓글</h3>
+		<h3 class="replyTitles">(${replyCount})</h3>
+	</div>
 	<div id="result">
 		
 	</div>
@@ -190,7 +233,7 @@
 	  <button class="btn btn-warning">댓글</button>
 	</form>
 	
-	<a href="./lostDelete?num=${dto.num}">글삭제</a>
+	<a id="lostDelete" href="./lostDelete?num=${dto.num}">글삭제</a>
 	<a id="lostUpdate">글수정</a>
 </div>
 	
