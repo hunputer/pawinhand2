@@ -115,9 +115,18 @@ public class LostController {
 	}
 	
 	@GetMapping("lostList")
-	public ModelAndView lostList() {
+	public ModelAndView lostList(LostDTO lostDTO, String sDate, String eDate) {
 		ModelAndView mv = new ModelAndView();
-		List<LostDTO> ar = lostService.getList();
+		if(lostDTO.getLostProvince() == null) {
+			lostDTO.setLostProvince("");
+		}
+		if(lostDTO.getAnimalSpecies() == null) {
+			lostDTO.setAnimalSpecies("");
+		}
+		List<LostDTO> ar = lostService.getList(lostDTO);
+		System.out.println(sDate);
+		System.out.println(eDate);
+		mv.addObject("lostDTO", lostDTO);
 		mv.addObject("lists", ar);
 		mv.setViewName("lost/lostList");
 		return mv;

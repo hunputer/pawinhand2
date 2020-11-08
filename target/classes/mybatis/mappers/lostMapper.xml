@@ -24,8 +24,9 @@
     	update lost set state = #{state}, lostDate = #{lostDate}, lostProvince = #{lostProvince}, lostCity = #{lostCity}, lostLocation = #{lostLocation}, phone = #{phone}, animalSpecies = #{animalSpecies}, detailSpecies = #{detailSpecies}, gender = #{gender},age = #{age}, color = #{color}, feature = #{feature}, contents = #{contents}, id = #{id} where num = #{num}
     </update>
     
-    <select id="getList" resultType="LostDTO">
-    	select * from lost
+    <select id="getList" resultType="LostDTO" parameterType="LostDTO">
+    	select * from lost where lostProvince like '%'||#{lostProvince}||'%' and 
+    	AnimalSpecies like '%'||#{animalSpecies}||'%'
     </select>
     
 </mapper>

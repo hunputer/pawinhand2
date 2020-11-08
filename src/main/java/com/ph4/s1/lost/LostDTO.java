@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 public class LostDTO {
 	private long num;
 	private String state;
+	private Date startDate;
+	private Date endDate;
 	private Date lostDate;
 	private String lostProvince;
 	private String lostCity;
@@ -23,6 +25,19 @@ public class LostDTO {
 	private String id;
 	private String fileName;
 	
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	public String getFileName() {
 		return fileName;
 	}

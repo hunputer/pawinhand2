@@ -29,7 +29,7 @@ public class LostDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", lostDTO);
 	}
 	
-	public List<LostDTO> getList(){
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<LostDTO> getList(LostDTO lostDTO){
+		return sqlSession.selectList(NAMESPACE+"getList",lostDTO);
 	}
 }
