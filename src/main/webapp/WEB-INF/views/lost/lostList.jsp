@@ -127,6 +127,11 @@
 		right : 250px;
 		cursor: pointer;
 	}
+	
+	.writeIconfocus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
 
 	
 </style>
@@ -226,7 +231,7 @@
 			</li>
 		</c:forEach>
 	</ul>
-	<img class="writeIcon" src="../resources/img/lost/write.png" width="100" height="100" alt="">
+	<img class="writeIcon" src="../resources/img/lost/write.png" tabindex=0 width="100" height="100" alt="">
 </div>
 
 
@@ -240,6 +245,14 @@
 	
 	$(".writeIcon").click(function(){
 		window.open("./lostWrite", 'Write Form', 'width=630px, height=700px, scrollbars=yes');
+	});
+	
+	$(".writeIcon").mouseenter(function(){
+		$(this).addClass("writeIconfocus");
+	});
+	
+	$(".writeIcon").mouseleave(function(){
+		$(this).removeClass("writeIconfocus");
 	});
 	
 </script>
