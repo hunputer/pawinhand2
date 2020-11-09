@@ -123,9 +123,21 @@ public class LostController {
 		if(lostDTO.getAnimalSpecies() == null) {
 			lostDTO.setAnimalSpecies("");
 		}
-		List<LostDTO> ar = lostService.getList(lostDTO);
+		if(sDate != null) {
+			if(!sDate.equals("")) {
+				System.out.println(1111);
+				lostDTO.setStartDate(Date.valueOf(sDate));
+			}
+		}
+		if(eDate != null) {
+			if(!eDate.equals("")) {
+				System.out.println(2222);
+				lostDTO.setEndDate(Date.valueOf(eDate));
+			}
+		}
 		System.out.println(sDate);
 		System.out.println(eDate);
+		List<LostDTO> ar = lostService.getList(lostDTO);
 		mv.addObject("lostDTO", lostDTO);
 		mv.addObject("lists", ar);
 		mv.setViewName("lost/lostList");

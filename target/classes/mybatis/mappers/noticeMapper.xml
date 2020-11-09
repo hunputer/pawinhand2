@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ph4.s1.board.notice.NoticeDAO">
+   <update id="setUpdate" parameterType="noticeDTO">
+      update board set title = #{title}, contents=#{contents} where num = #{num}
+   </update>
+   
+   <delete id="setDelete" parameterType="Long">
+      delete board where num = #{num}
+   </delete>
+   
+   <select id="getOne" parameterType="noticeDTO" resultType="noticeDTO">
+      select * from board where num = #{num}
+   </select>
+   
+   <select id="getList" resultType="noticeDTO" parameterType="Pager">
+     select * from
+    (select rownum R, N.* from 
+    (select * from board where
+    <choose>
+    	<when test="kind == 'tt'">
+    		title
+    	</when>
+    	<when test="kind == 'wr'">
+    		writer
+    	</when>
+    	<otherwise>
+    		contents
+    	</otherwise>
+    </choose>
+     like '%'||#{search}||'%' order by num desc) N)
+    where R between #{startRow} and #{lastRow}
+   </select>
+
+   <insert id="setInsert" parameterType="noticeDTO">
+   	  <selectKey keyProperty="num" resultType="Long" order="BEFORE">
+   	  	select notice.nextval from dual
+   	  </selectKey>
+      insert into board values(#{num}, #{title},#{writer},#{contents}, sysdate, 0)
+   </insert>
+   
+   <select id="getCount" resultType="Long" parameterType="Pager">
+        select count(num) from board 
+        where
+        <choose>
+        	<when test="kind == 'tt'">
+        		title
+        	</when>
+        	<when test="kind == 'wr'">
+        		writer
+        	</when>
+        	<otherwise>
+        		contents
+        	</otherwise>
+        </choose>
+        like '%'||#{search}||'%'
+   </select>
+   
+</mapper>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ph4.s1.board.qna.QnaDAO">
+	<insert id="setInsertFile" parameterType="BoardFileDTO">
+		insert into qnaFile values(qna_seq.nextval, #{num}, #{fileName}, #{oriName})
+	</insert>
+
+	<select id="getList" resultType="qnaDTO" parameterType="Pager" >
+		select * from
+    (select rownum R, N.* from 
+    (select * from qna where
+    <choose>
+    	<when test="kind == 'tt'">
+    		title
+    	</when>
+    	<when test="kind == 'wr'">
+    		writer
+    	</when>
+    	<otherwise>
+    		contents
+    	</otherwise>
+    </choose>
+     like '%'||#{search}||'%' order by ref desc, step asc) N)
+    where R between #{startRow} and #{lastRow}
+	</select>
+	
+	<select id="getCount" resultType="Long" parameterType="Pager">
+		select count(num) from qna where
+		<choose>
+			<when test="kind == 'tt'">
+				title
+			</when>
+			<when test="kind == 'wr'">
+				writer
+			</when>
+			<otherwise>
+				contents
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%'
+	</select>
+	
+	<update id="setUpdate" parameterType="qnaDTO">
+		update qna set title = #{title}, writer = #{writer} where num = #{num} 
+	</update>
+	
+	<delete id="setDelete" parameterType="Long">
+		delete from qna where num = #{num}
+	</delete>
+	
+	<insert id="setInsert" parameterType="qnaDTO">
+		insert into qna values (qna_seq.nextval, #{title}, #{writer}, #{contents},sysdate,0,qna_seq.currval,0,0)
+	</insert>
+	
+	<update id="setReplyUpdate" parameterType="qnaDTO">
+		update qna set step=step+1 where 
+		ref=(select ref from qna where num=#{num}) 
+		and step> (select step from qna where num=#{num})
+	</update>
+	
+	<insert id="setReply" parameterType="qnaDTO">
+		insert into qna values (qna_seq.nextval
+		, #{title}, #{writer}, #{contents}, sysdate, 0, 
+		(select ref from qna where num=#{num}), 
+		(select step+1 from qna where num=#{num}), 
+		(select depth+1 from qna where num=#{num}))
+	</insert>
+	
+	<select id="getOne" parameterType="QnaDTO" resultMap="getOneResult">
+		select Q.*, QF.* from
+		qna Q left join qnaFile QF
+		on Q.num = QF.num
+		where Q.num=#{num}
+	</select>
+	
+	<resultMap type="QnaDTO" id="getOneResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="regDate" property="regDate"/>
+		<result column="hit" property="hit"/>
+		<collection property="boardFileDTOs" ofType="BoardFileDTO" javaType="java.util.List">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</collection>
+	</resultMap>
+
+</mapper>
+

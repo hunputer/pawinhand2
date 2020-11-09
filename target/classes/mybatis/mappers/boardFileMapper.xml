@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ph4.s1.board.boardFile.BoardFileDAO">
+	
+    <insert id="setInsert" parameterType="BoardFileDTO">
+    	insert into boardfile values (#{num}, #{fileName}, #{oriName})
+    </insert>
+    
+    <select id="getFile" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+    	select * from boardfile where num = #{num}
+    </select>
+    
+</mapper>

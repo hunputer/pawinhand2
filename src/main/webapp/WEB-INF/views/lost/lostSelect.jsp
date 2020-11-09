@@ -276,7 +276,6 @@
 		
 		function stateColor(){
 			var val = $(".state").attr("title");
-			alert(val);
 			if(val == "목격"){
 				$(".state").css('background-color','#ffc107');
 			}else if(val == "보호"){

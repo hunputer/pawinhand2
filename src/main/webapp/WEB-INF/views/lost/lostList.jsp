@@ -131,6 +131,7 @@
 	
 	.animalSpecies{
 		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 	
 	.writeIcon{
@@ -147,6 +148,14 @@
     
     .radio2{
     	margin-left: 43px;
+    }
+    
+    .lostdate{
+    	margin-top: 15px;
+    }
+    
+    .dropdownmenu{
+    	background-color: #ffffe6;
     }
     
     
@@ -182,10 +191,10 @@
 			    	</h3>
 		    	</div>
 		  </button>
-		  <div class="dropdown-menu">
+		  <div class="dropdownmenu dropdown-menu">
 		  	<div class="selectForm">
 			    <form action="./lostList" method="get">
-			    	<div>
+			    	<div class="lostdate">
 			    		<h3 class="dates">기간 :</h3><input type="date" name="sDate"> ~ <input type="date" name="eDate"><br>
 			    	</div>
 				    <div class="lostProvince">

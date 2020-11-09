@@ -26,7 +26,25 @@
     
     <select id="getList" resultType="LostDTO" parameterType="LostDTO">
     	select * from lost where lostProvince like '%'||#{lostProvince}||'%' and 
-    	AnimalSpecies like '%'||#{animalSpecies}||'%'
+    	AnimalSpecies like '%'||#{animalSpecies}||'%' and
+    	lostdate between
+    	<choose>
+			<when test="startDate == null or startDate.equals('')">
+				ADD_MONTHS(TO_DATE(sysdate,'YYYY-MM-DD'),-12)
+			</when>
+			<otherwise>
+				#{startDate}
+			</otherwise>
+		</choose>
+		and
+		<choose>
+			<when test="endDate == null or endDate.equals('')">
+				sysdate
+			</when>
+			<otherwise>
+				#{endDate}
+			</otherwise>
+		</choose>
     </select>
     
 </mapper>
