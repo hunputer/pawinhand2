@@ -40,10 +40,10 @@
 	}
 	
 	.detailSpecies{
-		margin-bottom: 10px;
 	}
 	
 	.detailSpecies > h3{
+		display : inline-block;
 		font-size: 18px;
 	}
 	
@@ -112,13 +112,25 @@
 		height: 60px;
 	}
 	
-	.lostProvinceTitle, .animalSpeciesTitle{
+	.state{
+		display: inline-block;
+		margin-right: 10px;
+		width : 37px;
+		height: 25px;
+		padding-left: 2px;
+		color: white;
+		font-size: 13px;
+		background-color: #ffc107;
+	}
+	
+	.lostProvinceTitle, .animalSpeciesTitle, .dates{
 		display: inline-block;
 		font-size: 15px;
+		margin-right: 3px;
 	}
 	
 	.animalSpecies{
-		margin-top: 15px;
+		margin-top: 10px;
 	}
 	
 	.writeIcon{
@@ -132,6 +144,12 @@
         border-color: #28a745;
         box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
     }
+    
+    .radio2{
+    	margin-left: 43px;
+    }
+    
+    
 
 	
 </style>
@@ -168,7 +186,7 @@
 		  	<div class="selectForm">
 			    <form action="./lostList" method="get">
 			    	<div>
-			    		기간 : <input type="date" name="sDate"> ~ <input type="date" name="eDate"><br>
+			    		<h3 class="dates">기간 :</h3><input type="date" name="sDate"> ~ <input type="date" name="eDate"><br>
 			    	</div>
 				    <div class="lostProvince">
 				    	<h3 class="lostProvinceTitle">지역 :</h3>
@@ -181,6 +199,7 @@
 		  				<input type="radio" name="lostProvince" value="세종특별자치시">세종특별자치시
 		  				<input type="radio" name="lostProvince" value="대전광역시">대전광역시
 		  				<input type="radio" name="lostProvince" value="울산광역시">울산광역시
+		  				<div class="radio2">
 		  				<input type="radio" name="lostProvince" value="경기도">경기도
 		  				<input type="radio" name="lostProvince" value="강원도">강원도
 		  				<input type="radio" name="lostProvince" value="충청북도">충청북도
@@ -191,6 +210,7 @@
 		  				<input type="radio" name="lostProvince" value="경상북도">경상북도
 		  				<input type="radio" name="lostProvince" value="경상남도">경상남도
 		  				<input type="radio" name="lostProvince" value="제주특별자치도">제주특별자치도
+		  				</div>
 		  			</div>
 		  			<div class="animalSpecies">
 				    	<h3 class="animalSpeciesTitle">품종 :</h3>
@@ -199,19 +219,20 @@
 		  				<input type="radio" name="animalSpecies" value="고양이">고양이
 		  				<input type="radio" name="animalSpecies" value="기타">기타
 		  			</div>
-		  			<button>검색하기</button>		
+		  			<button class="btn btn-warning">검색하기</button>		
 			    </form>
 		    </div>
 	  	  </div>
 	</div>
 	<ul>
-		<c:forEach items="${lists}" var="list">
+		<c:forEach items="${lists}" var="list" varStatus="i">
 			<li class="lostList" title="${list.num}">
 				<div class="lostImage">
 					<img src="../resources/upload/lost/${list.fileName}" width="270" height="270" alt="">
 					<div class="lostMain">
 						<div class="detailSpecies">
 							<h3>${list.detailSpecies}</h3>
+							<h3 class="state" title="${list.state}">${list.state}</h3>
 						</div>
 						<div class="shortInfo">
 							<h3>${list.gender}/${list.color}/${list.age}</h3>
@@ -254,6 +275,18 @@
 	$(".writeIcon").mouseleave(function(){
 		$(this).removeClass("writeIconfocus");
 	});
+	
+	$(".lostList").mouseenter(function(){
+		$(this).addClass("writeIconfocus");
+	});
+	
+	$(".lostList").mouseleave(function(){
+		$(this).removeClass("writeIconfocus");
+	});
+	function init(){
+		$("input:radio[name='lostProvince']:radio[value='${lostDTO.lostProvince}']").prop('checked', true);
+		$("input:radio[name='animalSpecies']:radio[value='${lostDTO.animalSpecies}']").prop('checked', true);
+	}
 	
 </script>
 

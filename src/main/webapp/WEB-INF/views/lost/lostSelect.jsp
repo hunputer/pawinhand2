@@ -94,6 +94,10 @@
 	.state{
 		display: inline-block;
 		margin-right: 10px;
+		width : 35px;
+		height: 25px;
+		padding-left: 2px;
+		color: white; 
 	}
 	
 	.titles{
@@ -162,7 +166,7 @@
 </div>
 <div class="description">
 	<div class="divs">
-		<div class="state">${dto.state}</div>
+		<div class="state" title="${dto.state}">${dto.state}</div>
 		<span class="detailSpecies">${dto.detailSpecies}</span>
 	</div>
 	
@@ -240,6 +244,7 @@
 	<script type="text/javascript">
 	 	var curPage = 1;
 	    getList();
+	    stateColor();
 		
 	    $("#lostUpdate").click(function(){
 			window.open("./lostUpdate?num=${dto.num}", 'Write Form', 'width=630px, height=700px, scrollbars=yes');
@@ -267,6 +272,20 @@
 			$.get("../lostReply/lostReplyList?lostNum="+num+"&curPage="+curPage,function(data) {
 				$("#result").html(data);
 			});
+		}
+		
+		function stateColor(){
+			var val = $(".state").attr("title");
+			alert(val);
+			if(val == "목격"){
+				$(".state").css('background-color','#ffc107');
+			}else if(val == "보호"){
+				$(".state").css('background-color','#28a745');
+			}else if(val == "실종"){
+				$(".state").css('background-color','#fd7e14');
+			}else if(val == "완료"){
+				$(".state").css('background-color','#007bff');
+			}
 		}
 	</script>
 </div>
