@@ -20,27 +20,31 @@
 		font-weight: bold;
 		cursor: pointer;
 	}
+	.main{
+	 	width: 1000px;
+	 	height : 1200px;
+	 	margin: 100px auto 0px;
+	 }
 </style>
 
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<div class="container">
-  <h2>${board} Write Form</h2>
+<div class="main">
   <form id="frm" action="./${board}Write" method="post" enctype="multipart/form-data">
   
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">제목:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
     </div>
     
     <div class="form-group">
-      <label for="writer">Writer:</label>
+      <label for="writer">작성자:</label>
       <input type="text" class="form-control"  value="${member.id}" id="writer" placeholder="Enter Writer" name="writer">
     </div> 
     
      <div class="form-group">
-      <label for="contents">Contents:</label>
+      <label for="contents">내용:</label>
       <textarea class="form-control" rows="20" cols="30" id="contents" name="contents"></textarea>
     </div>
     

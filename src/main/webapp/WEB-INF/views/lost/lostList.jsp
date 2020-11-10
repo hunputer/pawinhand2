@@ -285,10 +285,6 @@
 		$(this).removeClass("writeIconfocus");
 	});
 	
-	$(".lostList").mouseenter(function(){
-		$(this).addClass("writeIconfocus");
-	});
-	
 	$(".lostList").mouseleave(function(){
 		$(this).removeClass("writeIconfocus");
 	});

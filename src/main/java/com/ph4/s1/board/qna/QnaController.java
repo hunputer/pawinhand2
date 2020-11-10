@@ -114,6 +114,7 @@ public class QnaController {
 		boardDTO = qnaService.getOne(boardDTO);
 		
 		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "qna");
 		mv.setViewName("board/boardUpdate");
 		
 		return mv;

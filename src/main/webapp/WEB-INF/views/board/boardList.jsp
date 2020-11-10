@@ -37,6 +37,17 @@
 		border-top-style: solid;
 		border-bottom-width: 1px; 
 	}
+	
+	.pager{
+		width : 500px;
+		margin: 0px auto;
+		text-align: center;
+	}
+	
+	.writeIconfocus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
 	</style>
 </head>
 <body>
@@ -69,7 +80,7 @@
   	</c:forEach>
   </table>
   
-  <div>
+  <div class="pager">
   	<c:if test="${pager.startNum gt 1}">
   		 <span class="c1" title="${pager.startNum-1}"}>[이전]</span>
     </c:if>
@@ -123,6 +134,18 @@
 			$("#search").val(search);
 			$("#searchForm").submit();
 		})
+		
+		$(".writeIcon").click(function(){
+			location.href= "./${board}Write";
+		});
+	
+		$(".writeIcon").mouseenter(function(){
+			$(this).addClass("writeIconfocus");
+		});
+	
+		$(".writeIcon").mouseleave(function(){
+			$(this).removeClass("writeIconfocus");
+		});
 	</script>
 </body>
 </html>
