@@ -19,7 +19,14 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
+	
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"></beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.ph4.s1.util.FileDown" id="fileDown"></beans:bean>
 	
 	<context:component-scan base-package="com.ph4.s1" />
 </beans:beans>

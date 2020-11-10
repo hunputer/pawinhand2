@@ -44,15 +44,22 @@
 	</select>
 	
 	<update id="setUpdate" parameterType="qnaDTO">
-		update qna set title = #{title}, writer = #{writer} where num = #{num} 
+		update qna set title = #{title}, contents = #{contents} where num = #{num} 
 	</update>
+	
+	<delete id="setDeleteFile" parameterType="qnaDTO">
+		delete from qnafile where num = #{num} 
+	</delete>
 	
 	<delete id="setDelete" parameterType="Long">
 		delete from qna where num = #{num}
 	</delete>
 	
 	<insert id="setInsert" parameterType="qnaDTO">
-		insert into qna values (qna_seq.nextval, #{title}, #{writer}, #{contents},sysdate,0,qna_seq.currval,0,0)
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+   	  		select qna_seq.nextval from dual
+   	  	</selectKey>
+		insert into qna values (#{num}, #{title}, #{writer}, #{contents},sysdate,0,qna_seq.currval,0,0)
 	</insert>
 	
 	<update id="setReplyUpdate" parameterType="qnaDTO">

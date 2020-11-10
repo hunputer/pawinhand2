@@ -11,9 +11,6 @@ import com.ph4.s1.util.Pager;
 
 public interface BoardService {
 		
-		//update
-		public int setUpdate(BoardDTO boardDTO) throws Exception;
-		
 		//delete
 		public int setDelete(BoardDTO boardDTO) throws Exception;
 		

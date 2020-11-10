@@ -9,8 +9,12 @@
     	insert into boardfile values (#{num}, #{fileName}, #{oriName})
     </insert>
     
-    <select id="getFile" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+    <select id="getFiles" parameterType="BoardFileDTO" resultType="BoardFileDTO">
     	select * from boardfile where num = #{num}
     </select>
+    
+    <delete id="setDelete" parameterType="BoardDTO">
+    	delete from boardfile where num = #{num}
+    </delete>
     
 </mapper>

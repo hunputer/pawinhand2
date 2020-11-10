@@ -20,7 +20,9 @@
   <h1>Contents : ${dto.contents}</h1>
   <div>
     <img alt="" src="../resources/upload/member/${fileName}">
-    <a href="./fileDown?fileName=${file.fileName}&oriName=${file.oriName}">${file.fileName}</a>
+    <c:forEach items="${files}" var="file">
+    	<a href="./fileDown?fileName=${file.fileName}&oriName=${file.oriName}">${file.fileName}</a><br>
+    </c:forEach>
   </div>
   <input type="button" title="${dto.num}" value="Delete" id="del" class="btn btn-warning">
   <input type="button" title="${dto.num}" value="Update" id="update" class="btn btn-warning">

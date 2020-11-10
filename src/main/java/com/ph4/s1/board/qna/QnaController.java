@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ph4.s1.board.BoardDAO;
 import com.ph4.s1.board.BoardDTO;
 import com.ph4.s1.board.boardFile.BoardFileDTO;
 import com.ph4.s1.board.notice.NoticeDTO;
@@ -89,13 +90,17 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getOne(BoardDTO boardDTO)throws Exception{
+	public ModelAndView getOne(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getOne(boardDTO);
 		
 		if(boardDTO != null) {
 			mv.setViewName("board/boardSelect");
 			mv.addObject("dto", boardDTO);
+			List<BoardFileDTO> files = boardDTO.getBoardFileDTOs();
+			if(files != null) {
+				mv.addObject("files", files);
+			}
 			mv.addObject("board", "qna");
 		}else {
 			mv.setViewName("common/result");
@@ -104,7 +109,7 @@ public class QnaController {
 		}
 		
 		return mv;
-				
+		
 	}
 	
 	@GetMapping("qnaUpdate")
@@ -117,6 +122,22 @@ public class QnaController {
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardUpdate");
 		
+		return mv;
+	}
+	
+	@PostMapping("qnaUpdate")
+	public ModelAndView setUpdate2(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setUpdate(boardDTO, files, session);
+		String message="업데이트가 실패하였습니다.";
+		if(result>0) {
+			message ="업데이트가 완료되었습니다.";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./qnaList");
+		
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
@@ -164,5 +185,4 @@ public class QnaController {
 		mv.setViewName("board/boardList");
 		return mv;
 	}
-	
 }

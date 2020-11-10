@@ -1,9 +1,17 @@
 package com.ph4.s1.board.boardFile;
 
 public class BoardFileDTO {
+	private String fileNum;
 	private long num;
 	private String fileName;
 	private String oriName;
+	
+	public String getFileNum() {
+		return fileNum;
+	}
+	public void setFileNum(String fileNum) {
+		this.fileNum = fileNum;
+	}
 	public long getNum() {
 		return num;
 	}

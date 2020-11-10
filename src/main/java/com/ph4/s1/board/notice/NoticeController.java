@@ -94,10 +94,10 @@ public class NoticeController {
 	public ModelAndView getOne(NoticeDTO noticeDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = noticeService.getOne(noticeDTO);
-		BoardFileDTO boardFileDTO = boardFileService.getFile(boardDTO); 
+		List<BoardFileDTO> boardFileDTOs = boardFileService.getFile(boardDTO); 
 		mv.addObject("board", "notice");
 		mv.addObject("dto", boardDTO);
-		mv.addObject("file", boardFileDTO);
+		mv.addObject("files", boardFileDTOs);
 		mv.addObject("path", "./noticeList");
 		mv.setViewName("board/boardSelect");
 		
@@ -119,9 +119,9 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeUpdate")
-	public ModelAndView setUpdate(NoticeDTO noticeDTO) throws Exception{
+	public ModelAndView setUpdate(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession httpSession ) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setUpdate(noticeDTO);
+		int result = noticeService.setUpdate(noticeDTO, files, httpSession);
 		String msg = "update fail";
 		if(result > 0) {
 			msg = "update Success";

@@ -34,7 +34,7 @@
 <div class="main">
 
   <form id="frm" action="./${board}Update" method="post" enctype="multipart/form-data">
-  
+    <input type="hidden" name="num" value="${dto.num}">
     <div class="form-group">
       <label for="title">제목:</label>
       <input type="text" class="form-control" id="title" value="${dto.title}" placeholder="Enter Title" name="title">
@@ -42,7 +42,7 @@
     
     <div class="form-group">
       <label for="writer">작성자:</label>
-      <input type="text" class="form-control"  value="${member.id}" id="writer" placeholder="Enter Writer" name="writer">
+      <input type="text" class="form-control"  value="${dto.writer}" id="writer" placeholder="Enter Writer" name="writer">
     </div> 
     
      <div class="form-group">

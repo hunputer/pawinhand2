@@ -1,5 +1,7 @@
 package com.ph4.s1.board.boardFile;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,7 +20,11 @@ public class BoardFileDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert",boardFileDTO);
 	}
 	
-	public BoardFileDTO getFile(BoardDTO boardDTO) {
-		return sqlSession.selectOne(NAMESPACE+"getFile", boardDTO);
+	public List<BoardFileDTO> getFiles(BoardDTO boardDTO) {
+		return sqlSession.selectList(NAMESPACE+"getFiles", boardDTO);
+	}
+	
+	public int setDelete(BoardDTO boardDTO) {
+		return sqlSession.delete(NAMESPACE+"setDelete",boardDTO);
 	}
 }
