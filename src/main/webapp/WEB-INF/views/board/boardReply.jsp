@@ -15,16 +15,16 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
   <h2>${board} reply Form</h2>
-  <form id="frm" action="./${board}Reply" method="post">
+  <form id="frm" action="./${board}Reply" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="num" value="${param.num}">
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+      <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title">
     </div>
     
     <div class="form-group">
       <label for="writer">Writer:</label>
-      <input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer">
+      <input type="text" class="form-control" id="writer" name="writer">
     </div> 
     
      <div class="form-group">

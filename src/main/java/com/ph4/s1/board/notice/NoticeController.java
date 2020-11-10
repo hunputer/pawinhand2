@@ -78,9 +78,9 @@ public class NoticeController {
 	public ModelAndView setInsert(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession httpSession) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setInsert(noticeDTO, files, httpSession);
-		String msg = "insert fail";
+		String msg = "입력하지 못했습니다";
 		if(result > 0) {
-			msg = "insert Success";
+			msg = "입력하였습니다";
 		}
 		
 		mv.addObject("msg", msg);
@@ -122,9 +122,9 @@ public class NoticeController {
 	public ModelAndView setUpdate(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession httpSession ) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setUpdate(noticeDTO, files, httpSession);
-		String msg = "update fail";
+		String msg = "업데이트가 실패하였습니다";
 		if(result > 0) {
-			msg = "update Success";
+			msg = "업데이트가 성공하였습니다";
 		}
 		
 		mv.addObject("msg", msg);
@@ -138,9 +138,9 @@ public class NoticeController {
 	public ModelAndView setDelete(NoticeDTO noticeDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setDelete(noticeDTO);
-		String msg = "delete fail";
+		String msg = "삭제가 실패하였습니다";
 		if(result > 0) {
-			msg = "delete Success";
+			msg = "삭제되었습니다";
 		}
 		
 		mv.addObject("msg", msg);

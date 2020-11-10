@@ -63,14 +63,14 @@ public class QnaController {
 	}
 	
 	@PostMapping("qnaReply")
-	public ModelAndView setReply(BoardDTO boardDTO)throws Exception{
+	public ModelAndView setReply(BoardDTO boardDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setReply(boardDTO);
+		int result = qnaService.setReply(boardDTO, files, session);
 		
-		String message = "Reply Write Fail";
+		String message = "답글작성을 하지 못하였습니다";
 		
 		if(result>0) {
-			message ="Reply Write Success";
+			message ="답글작성을 하였습니다";
 		}
 		
 		mv.addObject("msg", message);

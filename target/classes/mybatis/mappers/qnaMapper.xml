@@ -74,6 +74,9 @@
 		(select ref from qna where num=#{num}), 
 		(select step+1 from qna where num=#{num}), 
 		(select depth+1 from qna where num=#{num}))
+		<selectKey keyProperty="num" resultType="Long" order="AFTER">
+   	  		select qna_seq.currval from dual
+   	  	</selectKey>
 	</insert>
 	
 	<select id="getOne" parameterType="QnaDTO" resultMap="getOneResult">

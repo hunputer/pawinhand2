@@ -44,9 +44,28 @@ public class QnaService implements BoardService {
 		return fileName;
 	}
 	
-	public int setReply(BoardDTO boardDTO)throws Exception{
+	public int setReply(BoardDTO boardDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		int result = qnaDAO.setReplyUpdate(boardDTO);
 		result = qnaDAO.setReply(boardDTO);
+		
+		String path = session.getServletContext().getRealPath("/resources/upload/qna/");
+		File file = new File(path);
+		
+		for(int i=0;i<files.length;i++) {
+			if(i==0) {
+				continue;
+			}
+			MultipartFile multipartFile = files[i];
+			if( multipartFile.getSize() !=0) {
+				String fileName = fileSaver.save(file, multipartFile);
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO.setFileName(fileName);
+				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+				boardFileDTO.setNum(boardDTO.getNum());
+				qnaDAO.setInsertFile(boardFileDTO);
+			}
+		}
+		
 		return result;
 	}
 

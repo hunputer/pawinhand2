@@ -75,7 +75,7 @@ public class NoticeService implements BoardService {
 
 	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, HttpSession httpSession) throws Exception {
 		int result = noticeDAO.setUpdate(boardDTO);
-		result = boardFileDAO.setDelete(boardDTO);
+		int result2 = boardFileDAO.setDelete(boardDTO);
 		
 		String path = httpSession.getServletContext().getRealPath("/resources/upload/notice");
 		File file = new File(path);
@@ -95,7 +95,7 @@ public class NoticeService implements BoardService {
 				boardFileDTO.setFileName(fileName);
 				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 				boardFileDTO.setNum(boardDTO.getNum());
-				boardFileDAO.setInsert(boardFileDTO);
+				result = boardFileDAO.setInsert(boardFileDTO);
 			}
 		}
 		

@@ -35,12 +35,12 @@
   
     <div class="form-group">
       <label for="title">제목:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+      <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title">
     </div>
     
     <div class="form-group">
       <label for="writer">작성자:</label>
-      <input type="text" class="form-control"  value="${member.id}" id="writer" placeholder="Enter Writer" name="writer">
+      <input type="text" class="form-control"  value="${member.id}" id="writer" name="writer">
     </div> 
     
      <div class="form-group">
@@ -57,8 +57,7 @@
  
  	<div class="form-group">
  	<label></label>
-    <input type="button" class="btn btn-primary form-control" value="Write" id="btn">
-    <button type="submit" class="btn btn-default form-control">Write</button>
+    <button type="submit" class="btn btn-warning form-control">Write</button>
     </div>
   </form>
   

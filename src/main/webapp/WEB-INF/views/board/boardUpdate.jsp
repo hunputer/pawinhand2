@@ -59,8 +59,7 @@
  
  	<div class="form-group">
  	<label></label>
-    <input type="button" class="btn btn-primary form-control" value="Write" id="btn">
-    <button type="submit" class="btn btn-default form-control">Write</button>
+    <button type="submit" class="btn btn-warning form-control">작성</button>
     </div>
   </form>
   

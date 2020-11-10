@@ -55,14 +55,6 @@
 	<div class="main">
   
   <table class="tableborder table table-hover">
-  	<tr>
-  		<td>Num</td>
-  		<td>Title</td>
-  		<td>Writer</td>
-  		<td>Date</td>
-  		<td>Hit</td>
-  	</tr>
-  	
   	<c:forEach items="${lists}" var="dto">
   		<tr>
   			<td>${dto.num}</td>
@@ -105,7 +97,7 @@
         </select>
         <input id="search" type="text" class="form-control" name="search">
         <div class="input-group-btn">
-              <button class="btn btn-warning" type="submit">
+              <button class="btn btn-light" type="submit">
             	검색
               </button>
         </div>
