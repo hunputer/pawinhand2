@@ -104,7 +104,7 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		boardFileDAO.setDelete(boardDTO);
 		return noticeDAO.setDelete(boardDTO);
 	}
 

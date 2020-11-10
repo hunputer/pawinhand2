@@ -106,8 +106,9 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = qnaDAO.setDeleteFile(boardDTO);
+		result = qnaDAO.setDelete(boardDTO);
+		return result;
 	}
 
 	@Override

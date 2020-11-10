@@ -37,12 +37,12 @@
     <input type="hidden" name="num" value="${dto.num}">
     <div class="form-group">
       <label for="title">제목:</label>
-      <input type="text" class="form-control" id="title" value="${dto.title}" placeholder="Enter Title" name="title">
+      <input type="text" class="form-control" id="title" value="${dto.title}" placeholder="제목을 입력하세요." name="title">
     </div>
     
     <div class="form-group">
       <label for="writer">작성자:</label>
-      <input type="text" class="form-control"  value="${dto.writer}" id="writer" placeholder="Enter Writer" name="writer">
+      <input type="text" class="form-control"  value="${dto.writer}" id="writer" name="writer" readonly="readonly">
     </div> 
     
      <div class="form-group">
