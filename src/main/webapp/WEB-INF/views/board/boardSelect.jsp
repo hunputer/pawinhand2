@@ -39,7 +39,7 @@
 		font-family: sans-serif;
 		font-weight: bold;
 		height: 50px;
-		color: gray;
+		color: #a0a0a0;
 	}
 	
 	.regDate{
@@ -48,7 +48,7 @@
 		font-family: sans-serif;
 		font-weight: bold;
 		height: 50px;
-		color: gray;
+		color: #a0a0a0;
 	}
 	
 	.files{
@@ -66,7 +66,7 @@
 		font-family: sans-serif;
 		font-weight: bold;
 		height: 20px;
-		color: gray;
+		color: #a0a0a0;;
 	}
 	
 	.fileName{
@@ -127,13 +127,11 @@
 <script type="text/javascript">
 	$("#del").click(function(){
 		var num = $("#del").attr("title");
-		alert(num);
 		location.href="./${board}Delete?num="+num;
 	});
 	
 	$("#update").click(function(){
 		var num = $("#del").attr("title");
-		alert(num);
 		location.href="./${board}Update?num="+num;
 	});
 	

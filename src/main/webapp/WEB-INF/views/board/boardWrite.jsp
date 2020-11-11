@@ -119,7 +119,6 @@
 	 
 	 $('#btn').click(function() {
 		var contents = $('#contents').summernote('code');
-		alert(contents);
 		
 	});
 	$("#files").on("click", ".del", function() {

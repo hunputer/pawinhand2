@@ -30,7 +30,7 @@
      <div class="form-group">
       <label for="contents">Contents:</label>
       <textarea class="form-control" rows="20" cols="30" id="contents" name="contents"></textarea>
-    </div>	
+    </div>
  
  	<input type="button" value="FileAdd" id="fileAdd" class="btn btn-info">
 
@@ -41,8 +41,7 @@
  
  	<div class="form-group">
  	<label></label>
-    <input type="button" class="btn btn-primary form-control" value="Write" id="btn">
-    <button type="submit" class="btn btn-default form-control">Write</button>
+    <button type="submit" class="btn btn-warning form-control">Write</button>
     </div>
   </form>
   
